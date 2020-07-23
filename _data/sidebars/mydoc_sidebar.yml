@@ -44,15 +44,15 @@ entries:
       url: /mydoc_admin_portal_setup.html
       output: web, pdf      
 
-    - title: Wireframes
+    - title: Design (Wireframes)
       url: /mydoc_wireframes.html
       output: web, pdf
 
-    - title: Admin Functions
+    - title: Guide (Admin Functions)
       url: /mydoc_admin_functions.html
       output: web, pdf
 
-    - title: Deploy guide
+    - title: Remote Deployment guide
       url: /mydoc_admin_portal_deploy.html
       output: web, pdf 
 
@@ -60,11 +60,11 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Design
+    - title: Design (MySQL)
       url: /mydoc_database_design.html
       output: web, pdf
 
-  - title: Api
+  - title: API
     output: web, pdf
     folderitems:
 
@@ -72,17 +72,12 @@ entries:
     #   url: /mydoc_api_setup.html
     #   output: web, pdf
 
-    - title: Build Instructions
-      url: /mydoc_api_build_instructions.html
-      output: web, pdf
-
     - title: End Points
       url: /mydoc_api_endpoints.html
       output: web, pdf
-
-
-
-
-
+      
+      - title: Build Instructions
+      url: /mydoc_api_build_instructions.html
+      output: web, pdf
 
 
