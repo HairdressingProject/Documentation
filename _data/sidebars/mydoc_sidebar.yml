@@ -52,6 +52,10 @@ entries:
       url: /mydoc_admin_functions.html
       output: web, pdf
 
+    - title: Deploy guide
+      url: /mydoc_admin_portal_deploy.html
+      output: web, pdf 
+
   - title: Database
     output: web, pdf
     folderitems:
@@ -64,8 +68,8 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Guide
-      url: /mydoc_api.html
+    - title: Build Guide
+      url: /mydoc_build_api.html
       output: web, pdf
 
 

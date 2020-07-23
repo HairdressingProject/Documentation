@@ -5,7 +5,7 @@ last_updated: April 10, 2020
 tags: [api]
 summary: "This document outlines how to build the Admin api using .NET core 3.1"
 sidebar: mydoc_sidebar
-permalink: mydoc_api.html
+permalink: mydoc_build_api.html
 folder: mydoc
 ---
 
