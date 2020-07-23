@@ -79,11 +79,11 @@ ENGINE = INNODB;
 
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.accounts (
-    `user_id` 					BIGINT UNSIGNED NOT NULL PRIMARY KEY,
-    `recover_password_token` 	BINARY(16) UNIQUE DEFAULT NULL,
+    `user_id` 				BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+    `recover_password_token` 		BINARY(16) UNIQUE DEFAULT NULL,
     `account_confirmed` 		BOOL DEFAULT FALSE,
     `unusual_activity` 			BOOL DEFAULT FALSE,
-    `date_created` 				DATETIME DEFAULT NOW(),
+    `date_created` 			DATETIME DEFAULT NOW(),
     `date_modified` 			DATETIME DEFAULT NULL ON UPDATE NOW(),
     CONSTRAINT fk_user_id 		FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 )
@@ -111,15 +111,15 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.user_features
 (
-    `id`             BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `user_id`        BIGINT UNSIGNED NOT NULL DEFAULT 0,
-    `face_shape_id`  BIGINT NOT NULL,
-    `skin_tone_id`   BIGINT NOT NULL,
-    `hair_style_id`  BIGINT NOT NULL,
-    `hair_length_id` BIGINT NOT NULL,
-    `hair_colour_id` BIGINT NOT NULL,
-    `date_created`  DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified`  DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`             	BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `user_id`        	BIGINT UNSIGNED NOT NULL DEFAULT 0,
+    `face_shape_id`  	BIGINT NOT NULL,
+    `skin_tone_id`   	BIGINT NOT NULL,
+    `hair_style_id`  	BIGINT NOT NULL,
+    `hair_length_id` 	BIGINT NOT NULL,
+    `hair_colour_id` 	BIGINT NOT NULL,
+    `date_created`  	DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified`  	DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX (`id`),
     FOREIGN KEY (`user_id`)
         REFERENCES hair_project_db.users (`id`)
@@ -145,10 +145,10 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.face_shapes
 (
-    `id`            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `shape_name`    VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
-    `date_created` DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified` DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`            	BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `shape_name`    	VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
+    `date_created` 	DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified` 	DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX (`id`)
 )
 CHARACTER SET utf8mb4
@@ -172,12 +172,12 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.face_shape_links
 (
-    `id`            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `face_shape_id` BIGINT UNSIGNED NOT NULL,
-    `link_name`     VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
-    `link_url`      VARCHAR(512) NOT NULL DEFAULT '** ERROR: missing category **',
-    `date_created` DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified` DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`            	BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `face_shape_id` 	BIGINT UNSIGNED NOT NULL,
+    `link_name`     	VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
+    `link_url`      	VARCHAR(512) NOT NULL DEFAULT '** ERROR: missing category **',
+    `date_created` 	DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified` 	DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX(`id`),
     FOREIGN KEY (`face_shape_id`)
         REFERENCES hair_project_db.face_shapes (`id`)
@@ -202,10 +202,10 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.hair_styles
 (
-    `id`              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `hair_style_name` VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
-    `date_created`   DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified`   DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`              	BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `hair_style_name` 	VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
+    `date_created`   	DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified`   	DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX (`id`)
 )
 CHARACTER SET utf8mb4
@@ -229,12 +229,12 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.hair_style_links
 (
-    `id`            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `hair_style_id` BIGINT UNSIGNED NOT NULL,
-    `link_name`     VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
-    `link_url`      VARCHAR(512) NOT NULL DEFAULT '** ERROR: missing category **',
-    `date_created` DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified` DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`            	BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `hair_style_id` 	BIGINT UNSIGNED NOT NULL,
+    `link_name`     	VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
+    `link_url`      	VARCHAR(512) NOT NULL DEFAULT '** ERROR: missing category **',
+    `date_created` 	DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified` 	DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX(`id`),
     FOREIGN KEY (`hair_style_id`)
         REFERENCES hair_project_db.hair_styles (`id`)
@@ -259,10 +259,10 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.hair_lengths
 (
-    `id`               BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `hair_length_name` VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
-    `date_created`    DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified`    DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`               		BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `hair_length_name` 		VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
+    `date_created`    		DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified`    		DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX (`id`)
 )
 CHARACTER SET utf8mb4
@@ -286,12 +286,12 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.hair_length_links
 (
-    `id`             BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `hair_length_id` BIGINT UNSIGNED NOT NULL,
-    `link_name`      VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
-    `link_url`       VARCHAR(512) NOT NULL DEFAULT '** ERROR: missing category **',
-    `date_created`  DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified`  DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`             	BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `hair_length_id` 	BIGINT UNSIGNED NOT NULL,
+    `link_name`      	VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
+    `link_url`       	VARCHAR(512) NOT NULL DEFAULT '** ERROR: missing category **',
+    `date_created` 	DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified`  	DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX(`id`),
     FOREIGN KEY (`hair_length_id`)
         REFERENCES hair_project_db.hair_lengths (`id`)
@@ -317,10 +317,10 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.skin_tones
 (
-    `id`             BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `skin_tone_name` VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
-    `date_created`  DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified`  DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`             	BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `skin_tone_name` 	VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
+    `date_created`  	DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified`  	DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX (`id`)
 )
 CHARACTER SET utf8mb4
@@ -344,12 +344,12 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.skin_tone_links
 (
-    `id`            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `skin_tone_id`  BIGINT UNSIGNED NOT NULL,
-    `link_name`     VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
-    `link_url`      VARCHAR(512) NOT NULL DEFAULT '** ERROR: missing category **',
-    `date_created` DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified` DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`            	BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `skin_tone_id`  	BIGINT UNSIGNED NOT NULL,
+    `link_name`     	VARCHAR(128) NOT NULL DEFAULT '** ERROR: missing category **',
+    `link_url`      	VARCHAR(512) NOT NULL DEFAULT '** ERROR: missing category **',
+    `date_created` 	DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified` 	DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX(`id`),
     FOREIGN KEY (`skin_tone_id`)
         REFERENCES hair_project_db.skin_tones (`id`)
@@ -375,11 +375,11 @@ ENGINE = INNODB;
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.colours
 (
-    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `colour_name`   VARCHAR(64) NOT NULL DEFAULT '** ERROR: missing category **',
-    `colour_hash`   VARCHAR(64) NOT NULL DEFAULT '** ERROR: missing category **',
-    `date_created` DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified` DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id` 		BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `colour_name`   	VARCHAR(64) NOT NULL DEFAULT '** ERROR: missing category **',
+    `colour_hash`   	VARCHAR(64) NOT NULL DEFAULT '** ERROR: missing category **',
+    `date_created` 	DATETIME NOT NULL DEFAULT NOW(),
+    `date_modified` 	DATETIME DEFAULT NULL ON UPDATE NOW(),
     INDEX(`id`)
 )
 CHARACTER SET utf8mb4

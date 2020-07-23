@@ -12,12 +12,14 @@ Welcome to the documentation site for the Hairdressing App Project.
     * Introduction
 * Admin Portal
     * Setup
-    * Guide
+    * Guide (Admin Functions)
     * Design (Wireframes)
+    * Deployment (Digital Ocean)
 * Database
-    * Design (MySQL)
+    * Design (MariaDB)
 * API
     * Setup
+    * End Points
     * Build Instructions (Advanced)
 
 # Project Overview
