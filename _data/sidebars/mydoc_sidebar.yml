@@ -52,7 +52,7 @@ entries:
       url: /mydoc_admin_functions.html
       output: web, pdf
 
-    - title: Remote Deployment guide
+    - title: Deployment (Digital Ocean)
       url: /mydoc_admin_portal_deploy.html
       output: web, pdf 
 
