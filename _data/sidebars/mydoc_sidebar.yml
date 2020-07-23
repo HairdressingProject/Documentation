@@ -60,7 +60,7 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Design (MySQL)
+    - title: Design (MariaDB)
       url: /mydoc_database_design.html
       output: web, pdf
 
