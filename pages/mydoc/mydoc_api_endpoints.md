@@ -1,9 +1,9 @@
 ---
-title: Api
+title: API End Points
 keywords: Admin portal, Api, Endpoints
 last_updated: July 23, 2020
 tags: [api]
-summary: "This document outlines how all the api endpoints"
+summary: "This document outlines all of the API endpoints."
 sidebar: mydoc_sidebar
 permalink: mydoc_api_endpoints.html
 folder: mydoc
