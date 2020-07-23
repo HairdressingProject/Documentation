@@ -1,9 +1,9 @@
 ---
-title: Api
+title: Admin Portal Deployment
 keywords: Admin portal, Api
 last_updated: July 23, 2020
 tags: [api]
-summary: "This document outlines how to deploy the Admin api in a Digital Ocean Droplet"
+summary: "This document outlines how to deploy the Admin Portal to a Digital Ocean Droplet."
 sidebar: mydoc_sidebar
 permalink: mydoc_admin_portal_deploy.html
 folder: mydoc
