@@ -16,7 +16,7 @@ Welcome to the documentation site for the Hairdressing App Project.
     * Design (Wireframes)
     * Deployment (Digital Ocean)
 * Database
-    * Design (MySQL)
+    * Design (MariaDB)
 * API
     * Setup
     * End Points
