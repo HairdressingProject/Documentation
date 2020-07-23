@@ -23,24 +23,24 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Get started
+    - title: Introduction
       url: /index.html
       output: web, pdf
       type: homepage
 
-  - title: Release Notes
-    output: web, pdf
-    folderitems:
+  # - title: Release Notes
+  #   output: web, pdf
+  #   folderitems:
 
-    - title: 1.0 Release notes
-      url: /
-      output: web, pdf
+  #   - title: 1.0 Release notes
+  #     url: /
+  #     output: web, pdf
 
   - title: Admin Portal
     output: web, pdf
     folderitems:
 
-    - title: Setting up
+    - title: Setup
       url: /mydoc_admin_portal_setup.html
       output: web, pdf      
 
@@ -68,8 +68,16 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Build Guide
-      url: /mydoc_build_api.html
+    - title: Setup
+      url: /mydoc_api_setup.html
+      output: web, pdf
+
+    - title: Build Instructions
+      url: /mydoc_api_build_instructions.html
+      output: web, pdf
+
+    - title: End Points
+      url: /mydoc_api_endpoints.html
       output: web, pdf
 
 

@@ -5,11 +5,13 @@ last_updated: April 10, 2020
 tags: [api]
 summary: "This document outlines how to build the Admin api using .NET core 3.1"
 sidebar: mydoc_sidebar
-permalink: mydoc_build_api.html
+permalink: mydoc_api_build_instructions.html
 folder: mydoc
 ---
 
 {% include important.html content="This Walkthrough guide explains how to build the Admin api using a command-line interface and/or Visual Studio Code. Some settings differ when using Visual Studio." %}
+
+{% include important.html content="Security Flaw: Password=administrator below in Step 4 is publicly visible. It is the password for the projects MariaDB database, this will be changeable in the future, so that the project's seeding database cannot be so easily accessed." %}
 
 ## Requirements
 - .NET Core 3.1 SDK or later. [How to install](https://docs.microsoft.com/en-us/dotnet/core/install/sdk?pivots=os-windows)
