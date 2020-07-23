@@ -1,9 +1,9 @@
 ---
-title: Database design
+title: Database Design
 keywords: Admin portal, Database
 last_updated: April 7, 2020
 tags: [database]
-summary: "This document outlines the database design"
+summary: "This document outlines the database's design & how it is initally constructed using MariaDB."
 sidebar: mydoc_sidebar
 permalink: mydoc_database_design.html
 folder: mydoc
