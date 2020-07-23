@@ -1,5 +1,5 @@
 ---
-title: Admin Wireframes Design
+title: Admin Portal Design (Wireframes)
 keywords: Admin portal, wireframes, design
 last_updated: April 4, 2020
 tags: [design]
