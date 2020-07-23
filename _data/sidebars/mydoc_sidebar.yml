@@ -68,9 +68,9 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Setup
-      url: /mydoc_api_setup.html
-      output: web, pdf
+    # - title: Setup
+    #   url: /mydoc_api_setup.html
+    #   output: web, pdf
 
     - title: Build Instructions
       url: /mydoc_api_build_instructions.html
