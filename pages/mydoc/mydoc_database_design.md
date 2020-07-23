@@ -21,8 +21,6 @@ CREATE DATABASE IF NOT EXISTS hair_project_db CHARACTER SET utf8mb4 COLLATE utf8
 
 ```
 
-
-
 ## 3. Tables
 
 ### 3.1 Users table
@@ -32,12 +30,13 @@ CREATE DATABASE IF NOT EXISTS hair_project_db CHARACTER SET utf8mb4 COLLATE utf8
 | users |
 |-------|---------|
 | id | bigint|
-| username | varchar(32) |
-| user_password | varchar(512) |
-| user_emal | varchar(512) |
+| user_name | varchar(32) |
+| user_password_hash | varchar(512) |
+| user_password_salt | varchar(512) |
+| user_email | varchar(512) |
 | first_name | varchar(128) | 
 | last_name | varchar(128) |
-| role | ENUM('admin', 'developer', 'user') |
+| user_role | ENUM('admin', 'developer', 'user') |
 | date_created | datetime |
 | date_updated | datetime |
 
@@ -46,15 +45,18 @@ CREATE DATABASE IF NOT EXISTS hair_project_db CHARACTER SET utf8mb4 COLLATE utf8
 ```mysql
 CREATE TABLE IF NOT EXISTS hair_project_db.users
 (
-    `id`            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
-    `user_name`     VARCHAR(32) NOT NULL,
-    `user_password` VARCHAR(512) NOT NULL,
-    `user_email`    VARCHAR(512) NOT NULL,
-    `first_name`    VARCHAR(128) NOT NULL DEFAULT 'user',
-    `last_name`     VARCHAR(128),
-    `user_role`     ENUM('admin', 'developer', 'user') NOT NULL DEFAULT 'user',
-    `date_created` DATETIME NOT NULL DEFAULT NOW(),
-    `date_modified` DATETIME DEFAULT NULL ON UPDATE NOW(),
+    `id`            		BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `user_name`     		VARCHAR(32) NOT NULL,
+    `user_password_hash` 	VARCHAR(512) NOT NULL,
+	`user_password_salt` 	VARCHAR(512) NOT NULL,
+    `user_email`    		VARCHAR(512) NOT NULL,
+    `first_name`    		VARCHAR(128) NOT NULL DEFAULT 'user',
+    `last_name`     		VARCHAR(128),
+    `user_role`     		ENUM('admin', 'developer', 'user') NOT NULL DEFAULT 'user',
+    `date_created`  		DATETIME DEFAULT NOW(),
+    `date_modified` 		DATETIME DEFAULT NULL ON UPDATE NOW(),
+    UNIQUE (`user_name`),
+    UNIQUE (`user_email`),
     INDEX (`id`)
 )
 CHARACTER SET utf8mb4
@@ -62,7 +64,35 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.2 User Features table
+### 3.2 Accounts table
+
+<!-- {% include image.html file="/DB_design/accounts.png" alt="Accounts table" caption="Accounts table" %} -->
+
+| users |
+|-------|---------|
+| user_id | bigint|
+| recover_password_token | binary(16) |
+| account_confirmed | bool |
+| unusual_activity | bool |
+| date_created | datetime |
+| date_updated | datetime |
+
+```mysql
+CREATE TABLE IF NOT EXISTS hair_project_db.accounts (
+    `user_id` 					BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+    `recover_password_token` 	BINARY(16) UNIQUE DEFAULT NULL,
+    `account_confirmed` 		BOOL DEFAULT FALSE,
+    `unusual_activity` 			BOOL DEFAULT FALSE,
+    `date_created` 				DATETIME DEFAULT NOW(),
+    `date_modified` 			DATETIME DEFAULT NULL ON UPDATE NOW(),
+    CONSTRAINT fk_user_id 		FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci
+ENGINE = INNODB;
+```
+
+### 3.3 User Features table
 
 <!-- {% include image.html file="/DB_design/user_features_table.png" alt="User features table" caption="User features table" %} -->
 
@@ -100,7 +130,7 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.3 Face shapes table
+### 3.4 Face shapes table
 
 <!-- {% include image.html file="/DB_design/face_shapes_table.png" alt="Face shapes table" caption="Face shapes table" %} -->
 
@@ -126,7 +156,7 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.4 Face shape links table
+### 3.5 Face shape links table
 
 <!-- {% include image.html file="/DB_design/face_shape_links_table.png" alt="Face shape links table" caption="Face shape links table" %} -->
 
@@ -158,7 +188,7 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.5 Hair styles table
+### 3.6 Hair styles table
 
 <!-- {% include image.html file="/DB_design/hair_styles_table.png" alt="Hair styles table" caption="Hair styles table" %} -->
 
@@ -183,7 +213,7 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.6 Hair style links table
+### 3.7 Hair style links table
 
 <!-- {% include image.html file="/DB_design/hair_style_links_table.png" alt="Hair style links table" caption="Hair style links table" %} -->
 
@@ -215,7 +245,7 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.7 Hair lengths table
+### 3.8 Hair lengths table
 
 <!-- {% include image.html file="/DB_design/hair_lengths_table.png" alt="Hair lengths table" caption="Hair lengths table" %} -->
 
@@ -240,7 +270,7 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.8 Hair length links table
+### 3.9 Hair length links table
 
 <!-- {% include image.html file="/DB_design/hair_length_links_table.png" alt="Hair length links table" caption="Hair length links table" %} -->
 
@@ -272,7 +302,7 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.9 Skin tones table
+### 3.10 Skin tones table
 
 <!-- {% include image.html file="/DB_design/skin_tones_table.png" alt="Skin tones table" caption="Skin tones table" %} -->
 
@@ -298,7 +328,7 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.10 Skin tone links table
+### 3.11 Skin tone links table
 
 <!-- {% include image.html file="/DB_design/skin_tone_links_table.png" alt="Skin tone links table" caption="Skin tone links table" %} -->
 
@@ -330,7 +360,7 @@ COLLATE utf8mb4_general_ci
 ENGINE = INNODB;
 ```
 
-### 3.11 Colours table
+### 3.12 Colours table
 
 <!-- {% include image.html file="/DB_design/colours_table.png" alt="Colours table" caption="Colours table" %} -->
 
