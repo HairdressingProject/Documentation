@@ -983,3 +983,5 @@ After you have set up your request, simply click __Send__.
 
 ###  2.5. <a name='Extra-PaginationSearching'></a>Extra - Pagination & Searching
 The "Colours" folder in the project's main Postman-collection outlines how pagination & searching work requests work in the project's API.
+
+<sup> *Private GitHub Source: https://github.com/HairdressingProject/Production/blob/master/Backend/README.md (editted to remove the 'Table of Contents') </sup>
