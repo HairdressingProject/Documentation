@@ -5,7 +5,7 @@ tags: [getting_started]
 sidebar: mydoc_sidebar
 permalink: index.html
 ---
-Welcome to the documentation site for the Hairdressing App Project.
+Welcome to the documentation site for the Hairdressing App Project at [StyleMe.best](https://styleme.best)
 
 # Documentation Layout
 * Overview
